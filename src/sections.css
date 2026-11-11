@@ -1,0 +1,206 @@
+em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.testimonials h2,
+.contact h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-top: 16px;
+}
+
+/* Testimonials: two rails in opposite directions, edge-faded by a mask, paused on hover */
+.testimonials {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.t-rows {
+  margin-top: 48px;
+  display: grid;
+  gap: 16px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+.t-row {
+  display: flex;
+  width: max-content;
+  /* ponytail: 5 cards per rail = 1780px per copy; viewports wider than that show a gap — add cards */
+  animation: marquee 70s linear infinite; /* keyframes shared with the gallery, in index.css */
+}
+
+.t-row.reverse { animation-direction: reverse; }
+.t-rows:hover .t-row { animation-play-state: paused; }
+
+.t-set {
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+.t-card {
+  flex: none;
+  width: 340px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  text-align: left;
+  background: #DBDBD5;
+  border: 1px solid var(--border);
+}
+
+.t-card blockquote {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.t-card figcaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.t-card strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.t-card small {
+  display: block;
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+/* initials on a disc — no image dependency */
+.t-avatar {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.t-sample {
+  margin-left: auto;
+  padding: 3px 6px;
+  border: 1px solid currentColor;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* Contact */
+.contact {
+  margin-top: 120px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-info,
+.contact-qr {
+  background: var(--bg);
+  padding: 48px 32px;
+}
+
+.contact dl { margin-top: 48px; }
+
+.contact dl > div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.contact dt {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.contact dd {
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.contact dd a {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.contact dd a:hover { border-color: currentColor; }
+
+.contact-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.contact-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+  transition: background-color var(--transition);
+}
+
+.contact-qr:hover { background: var(--bg-deep); }
+
+.contact-qr img {
+  width: min(220px, 100%);
+  height: auto;
+  background: #fff;
+  padding: 12px;
+}
+
+.contact-qr-text {
+  max-width: 220px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .contact { grid-template-columns: 1fr; }
+  .contact dl > div { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* Small screens: the testimonial rails reflow into a plain vertical list */
+@media (max-width: 600px) {
+  .t-rows { -webkit-mask-image: none; mask-image: none; padding: 0 16px; }
+  .t-row { animation: none; width: auto; display: block; }
+  .t-set { flex-direction: column; padding: 0; }
+  .t-set[aria-hidden='true'] { display: none; }
+  .t-card { width: auto; }
+}
+
+/* Reduced motion: no rails at all, just a readable wrapped grid */
+@media (prefers-reduced-motion: reduce) {
+  .t-rows { -webkit-mask-image: none; mask-image: none; padding: 0 16px; }
+  .t-row { animation: none; width: auto; display: block; }
+  .t-set { flex-wrap: wrap; justify-content: center; padding: 0; }
+  .t-set[aria-hidden='true'] { display: none; }
+}

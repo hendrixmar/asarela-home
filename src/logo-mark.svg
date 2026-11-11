@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 705" fill="#B8975A" role="img" aria-label="Asarela Home">
+  <!-- The ltr/rtl/up/down/fade classes and the i variable only drive the intro animation in index.css; static everywhere else. -->
+  <defs>
+    <pattern id="flute" width="13.5" height="10" patternUnits="userSpaceOnUse">
+      <rect width="9" height="10" />
+    </pattern>
+    <path id="leaf" d="M0 0Q8-6 20 0Q8 6 0 0Z" />
+    <g id="frond">
+      <path d="M0 0H112" fill="none" stroke="#6B7355" stroke-width="2" />
+      <g fill="#6B7355">
+        <use href="#leaf" transform="translate(30) rotate(-38)" />
+        <use href="#leaf" transform="translate(36) rotate(38)" />
+        <use href="#leaf" transform="translate(50) rotate(-38)" />
+        <use href="#leaf" transform="translate(56) rotate(38)" />
+        <use href="#leaf" transform="translate(70) rotate(-38)" />
+        <use href="#leaf" transform="translate(76) rotate(38)" />
+        <use href="#leaf" transform="translate(90) rotate(-38)" />
+        <use href="#leaf" transform="translate(96) rotate(38)" />
+        <use href="#leaf" transform="translate(108) rotate(0)" />
+      </g>
+    </g>
+  </defs>
+
+  <!-- shelf: three horizontals joined on the right -->
+  <rect class="ltr" style="--i:0" x="5" y="280" width="548" height="37" />
+  <rect class="down" style="--i:2" x="516" y="280" width="37" height="185" />
+  <rect class="ltr" style="--i:1" x="40" y="355" width="468" height="36" />
+  <rect class="rtl" style="--i:3" x="65" y="428" width="488" height="37" />
+
+  <!-- slats above -->
+  <rect class="up" style="--i:4" x="185" y="5" width="37" height="275" />
+  <rect class="up" style="--i:5" x="272" y="85" width="36" height="195" />
+  <rect class="up" style="--i:6" x="345" y="180" width="37" height="100" />
+
+  <!-- slats below -->
+  <rect class="down" style="--i:4" x="185" y="465" width="37" height="157" />
+  <rect class="down" style="--i:5" x="272" y="465" width="36" height="195" />
+  <rect class="down" style="--i:6" x="350" y="465" width="37" height="235" />
+
+  <!-- fluted panel, quarter round, vase and frond -->
+  <g class="fade" style="--i:8">
+    <rect x="437" y="198" width="81" height="82" fill="url(#flute)" />
+    <path d="M185 465H65A157 157 0 0 0 185 617Z" fill="url(#flute)" />
+    <path d="M68 465A154 154 0 0 0 222 619" fill="none" stroke="#B8975A" stroke-width="6" />
+    <use href="#frond" transform="translate(405 228) rotate(-68)" />
+    <use href="#frond" transform="translate(405 228) rotate(-48) scale(0.95)" />
+    <use href="#frond" transform="translate(405 228) rotate(-100) scale(0.7)" />
+    <path d="M399 226h12v12a22 21 0 1 1-12 0Z" fill="#DDD6CA" />
+  </g>
+</svg>
